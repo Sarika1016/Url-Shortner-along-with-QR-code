@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+    
+    <!-- Firebase Initialization Script -->
+    <script src="{{ url_for('static', filename='firebase.js') }}"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <form id="url-form" onsubmit="return false;">
+            <div>
+                <label for="url">Enter URL:</label>
+                <input type="url" id="url" name="url" placeholder="https://example.com" required>
+            </div>
+            <div>
+                <label for="alias">Custom Alias (optional):</label>
+                <input type="text" id="alias" name="alias" placeholder="my-custom-alias">
+            </div>
+            <div class="button-group">
+                <button type="submit" id="shorten-btn">Shorten URL</button>
+                <button type="button" id="qr-btn">Generate QR Code</button>
+            </div>
+        </form>
+        <div id="error-message" class="error-message hidden" role="alert"></div>
+        <div id="result"></div>
+        <div id="qr-popup" class="hidden" role="dialog" aria-labelledby="qr-title">
+            <span id="close-qr" role="button" tabindex="0" aria-label="Close QR code">&times;</span>
+            <h2 id="qr-title">QR Code</h2>
+            <img id="qr-image" src="" alt="QR Code for shortened URL">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
